@@ -19,8 +19,8 @@ export const STATUSES = [
 export const EMPTY_JOB = {
   company: '',
   jobTitle: '',
-  platform: 'LinkedIn',
+  platform: '',
   appliedDate: '',
-  status: 'Applied',
+  status: '',
   notes: '',
 };

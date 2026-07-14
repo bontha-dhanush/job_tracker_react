@@ -41,6 +41,7 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
       status: form.status,
       notes: form.notes.trim(),
     });
+
     onClose();
   };
 
@@ -57,7 +58,12 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
       >
         <div className="modal__header">
           <h2 id="job-form-title">{title}</h2>
-          <button type="button" className="modal__close" onClick={onClose} aria-label="Close">
+          <button
+            type="button"
+            className="modal__close"
+            onClick={onClose}
+            aria-label="Close"
+          >
             &times;
           </button>
         </div>
@@ -72,10 +78,12 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
                 type="text"
                 value={form.company}
                 onChange={handleChange}
-                placeholder="Acme Corp"
+                placeholder="Enter company name"
                 className={errors.company ? 'input-error' : ''}
               />
-              {errors.company && <span className="field-error">{errors.company}</span>}
+              {errors.company && (
+                <span className="field-error">{errors.company}</span>
+              )}
             </div>
 
             <div className="form-group">
@@ -86,10 +94,12 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
                 type="text"
                 value={form.jobTitle}
                 onChange={handleChange}
-                placeholder="Software Engineer"
+                placeholder="Enter job title"
                 className={errors.jobTitle ? 'input-error' : ''}
               />
-              {errors.jobTitle && <span className="field-error">{errors.jobTitle}</span>}
+              {errors.jobTitle && (
+                <span className="field-error">{errors.jobTitle}</span>
+              )}
             </div>
           </div>
 
@@ -103,13 +113,20 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
                 onChange={handleChange}
                 className={errors.platform ? 'input-error' : ''}
               >
+                <option value="" disabled>
+                  Select Platform
+                </option>
+
                 {PLATFORMS.map((item) => (
                   <option key={item} value={item}>
                     {item}
                   </option>
                 ))}
               </select>
-              {errors.platform && <span className="field-error">{errors.platform}</span>}
+
+              {errors.platform && (
+                <span className="field-error">{errors.platform}</span>
+              )}
             </div>
 
             <div className="form-group">
@@ -122,7 +139,9 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
                 onChange={handleChange}
                 className={errors.appliedDate ? 'input-error' : ''}
               />
-              {errors.appliedDate && <span className="field-error">{errors.appliedDate}</span>}
+              {errors.appliedDate && (
+                <span className="field-error">{errors.appliedDate}</span>
+              )}
             </div>
           </div>
 
@@ -135,19 +154,27 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
               onChange={handleChange}
               className={errors.status ? 'input-error' : ''}
             >
+              <option value="" disabled>
+                Select Status
+              </option>
+
               {STATUSES.map((item) => (
                 <option key={item} value={item}>
                   {item}
                 </option>
               ))}
             </select>
-            {errors.status && <span className="field-error">{errors.status}</span>}
+
+            {errors.status && (
+              <span className="field-error">{errors.status}</span>
+            )}
           </div>
 
           <div className="form-group">
             <label htmlFor="notes">
               Notes <span className="label-optional">(Optional)</span>
             </label>
+
             <textarea
               id="notes"
               name="notes"
@@ -159,9 +186,14 @@ function JobForm({ isOpen, onClose, onSubmit, initialJob = null }) {
           </div>
 
           <div className="modal__actions">
-            <button type="button" className="btn btn--outline" onClick={onClose}>
+            <button
+              type="button"
+              className="btn btn--outline"
+              onClick={onClose}
+            >
               Cancel
             </button>
+
             <button type="submit" className="btn btn--primary">
               {initialJob ? 'Save Changes' : 'Add Application'}
             </button>

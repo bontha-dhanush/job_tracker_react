@@ -81,7 +81,7 @@ function SignUp() {
               type="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="you@example.com"
+              placeholder="Enter your email"
               autoComplete="email"
               className={errors.email ? 'input-error' : ''}
             />
